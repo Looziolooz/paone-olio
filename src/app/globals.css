@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   Fonts — exact self-hosted faces from harvest.corto-olive.com
+   ============================================================ */
+@font-face {
+  font-family: "Quart";
+  src: url("/fonts/Quart-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Plantin MT Pro";
+  src: url("/fonts/PlantinMTPro-Light.woff2") format("woff2");
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Plantin MT Pro";
+  src: url("/fonts/PlantinMTPro-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Plantin MT Pro";
+  src: url("/fonts/PlantinMTPro-Italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/SofiaPro-Light.woff2") format("woff2");
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/SofiaProRegular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/SofiaPro-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/SofiaPro-Bold.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/SofiaPro-Black.woff2") format("woff2");
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+
+/* ============================================================
+   Design tokens (Corto Harvest)
+   ============================================================ */
+@theme {
+  --color-olive: #7c886a;        /* titles, leads, journey words/numbers */
+  --color-olive-cta: #8fa282;    /* "SEE OUR X" labels */
+  --color-olive-accent: #94a780; /* slide-to-explore, misc accents */
+  --color-sage-pale: #c5cfbe;    /* giant parallax titles */
+  --color-ink: #2b2b2b;          /* crafted-with-care small caps */
+  --color-body-ink: #424242;     /* body paragraphs */
+  --color-ivory: #f6f3ea;        /* page bg fallback */
+  --color-harvest-green: #8a9a6f;/* reserve/outro bg fallback */
+
+  --font-quart: "Quart", Georgia, "Times New Roman", serif;
+  --font-plantin: "Plantin MT Pro", Georgia, "Times New Roman", serif;
+  --font-sofia: "Sofia Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* shadcn baseline (kept for primitives / cn util) */
+:root {
+  --background: #ffffff;
+  --foreground: #2b2b2b;
+  --radius: 0.625rem;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-family: var(--font-sofia);
+    color: var(--color-body-ink);
+    background-color: var(--color-ivory);
+    background-image: url("/images/bg/ivory_bg.jpg");
+    background-repeat: repeat;
+    background-size: 1400px auto;
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-weight: 400; }
+  ::selection { background: var(--color-olive-accent); color: #fff; }
+}
+
+/* ============================================================
+   Smooth scroll (Lenis)
+   ============================================================ */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ============================================================
+   Reveal-on-scroll
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(42px);
+  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal].is-inview { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   Layout helpers
+   ============================================================ */
+.site-wrap { width: min(90%, 1232px); margin-inline: auto; }
+.content-wrap { width: min(88%, 1030px); margin-inline: auto; }
+
+.giant-title {
+  font-family: var(--font-quart);
+  color: var(--color-sage-pale);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  font-size: clamp(64px, 9.4vw, 130px);
+}
+
+.eyebrow {
+  font-family: var(--font-sofia);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: clamp(13px, 1.1vw, 15.6px);
+}

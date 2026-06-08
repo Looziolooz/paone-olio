@@ -1,0 +1,9 @@
+<svg enable-background="new 0 0 141 140" version="1.1" viewBox="0 0 141 140" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<style type="text/css">
+	.x-circle-0{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+	.x-circle-1{fill:#FFFFFF;}
+</style>
+<circle class="x-circle-0" cx="70.5" cy="70" r="68.5"/>
+<rect class="x-circle-1" transform="matrix(.7071 -.7071 .7071 .7071 -28.848 70.354)" x="68.5" y="33" width="4" height="74"/>
+<rect class="x-circle-1" transform="matrix(.7071 .7071 -.7071 .7071 70.146 -29.348)" x="68.5" y="33" width="4" height="74"/>
+</svg>
