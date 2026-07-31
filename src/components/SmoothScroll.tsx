@@ -6,6 +6,9 @@ import { setLenis } from "@/lib/lenis";
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // progressive-enhancement flag; re-added here in case hydration reset <html> classes
+    document.documentElement.classList.add("js");
+
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 

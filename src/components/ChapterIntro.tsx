@@ -64,7 +64,7 @@ export function ChapterIntro({
       {/* content */}
       <div className="relative z-10 flex w-full flex-col items-center px-6 py-24 text-center">
         {beginJourney && (
-          <div className="mb-[14vh] flex flex-col items-center gap-3 text-olive">
+          <div className="mb-[14vh] flex flex-col items-center gap-3 text-white/90 drop-shadow-[0_1px_10px_rgba(10,14,6,0.45)]">
             <span className="font-plantin text-[18px] italic">Begin Your Journey</span>
             <ArrowDown className="h-9 w-4 animate-bounce [animation-duration:2.4s]" />
           </div>

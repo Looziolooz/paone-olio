@@ -7,10 +7,25 @@ export function IntroGate() {
   const [leaving, setLeaving] = useState(false);
   const [gone, setGone] = useState(false);
 
+  // ?nogate=1 skips the gate (QA / deep links). Deliberately a post-mount
+  // state update: deriving it during render would desync SSR and client
+  // trees and leave the gate un-hydrated.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has("nogate")) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setGone(true);
+    }
+  }, []);
+
   const dismiss = () => setLeaving(true);
 
   useEffect(() => {
-    if (gone) return;
+    if (gone) {
+      // whatever path removed the gate, never leave scrolling locked
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      return;
+    }
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     const onIntent = () => dismiss();
@@ -36,6 +51,7 @@ export function IntroGate() {
 
   return (
     <div
+      data-intro-gate
       className={cn(
         "grain fixed inset-0 z-[90] flex flex-col items-center justify-center overflow-hidden bg-[#181d10] text-white transition-opacity duration-700",
         leaving ? "pointer-events-none opacity-0" : "opacity-100",

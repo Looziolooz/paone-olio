@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/Reveal";
-import { PlayCircle, AlivaWordmark, InstagramIcon } from "@/components/icons";
+import { ContactForm } from "@/components/ContactForm";
+import { AlivaWordmark, InstagramIcon } from "@/components/icons";
 
 export function ReserveOutro() {
   return (
@@ -10,7 +11,7 @@ export function ReserveOutro() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
 
       <div className="relative z-10">
-        <div className="content-wrap flex flex-col items-center py-[clamp(72px,10vw,140px)] text-center">
+        <div className="content-wrap flex flex-col items-center py-[clamp(72px,10vw,120px)] text-center">
           <Reveal className="flex flex-col items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -23,20 +24,12 @@ export function ReserveOutro() {
               Passion for olive oil, wealth of our earth. From our family land in Maida to your table —
               through a short chain and a direct relation with the people who enjoy it.
             </h2>
-            <a
-              href="mailto:info@alivaextra.it?subject=Aliva — info and orders"
-              className="group mt-10 inline-flex items-center gap-4 text-white transition-opacity hover:opacity-85"
-            >
-              <span className="flex h-[46px] w-[46px] items-center justify-center transition-transform duration-500 ease-out group-hover:scale-110">
-                <PlayCircle className="h-full w-full" />
-              </span>
-              <span className="eyebrow">write to us for info &amp; orders</span>
-            </a>
-            <p className="mt-6 font-plantin text-[clamp(14px,1.4vw,18px)] italic text-white/85">
-              Azienda Agricola Gregorio Paone · c/da Frass&agrave; · 88025 Maida (CZ)
-            </p>
           </Reveal>
         </div>
+
+        <Reveal delay={120}>
+          <ContactForm />
+        </Reveal>
 
         <footer className="border-t border-white/20">
           <div className="site-wrap flex flex-col items-center justify-between gap-5 py-7 sm:flex-row">

@@ -24,8 +24,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
+        {/* progressive enhancement flag: reveal/gate effects only apply when JS runs */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

@@ -29,7 +29,9 @@ function Card({ card }: { card: PlantingCard }) {
   const [view, setView] = useState<"front" | "top">("front");
   return (
     <div className="flex flex-col items-center text-center">
-      <p className="eyebrow mb-4 text-[clamp(10px,0.85vw,12px)] text-olive-cta">{card.title}</p>
+      <p className="eyebrow mb-4 flex min-h-[4.8em] items-end justify-center text-[clamp(10px,0.85vw,12px)] text-olive-cta">
+        {card.title}
+      </p>
       <div className="photo-frame relative aspect-[4/3] w-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
