@@ -8,6 +8,8 @@ import { VideoModal } from "@/components/VideoModal";
 interface SeeOurButtonProps {
   label: string;
   poster?: string;
+  /** real video file for the modal; without it the animated photo shows */
+  video?: string;
   title?: string;
   /** olive on light bg, or white over photos / green bg */
   variant?: "olive" | "white";
@@ -15,7 +17,7 @@ interface SeeOurButtonProps {
   size?: number;
 }
 
-export function SeeOurButton({ label, poster, title, variant = "olive", className, size = 46 }: SeeOurButtonProps) {
+export function SeeOurButton({ label, poster, video, title, variant = "olive", className, size = 46 }: SeeOurButtonProps) {
   const [open, setOpen] = useState(false);
   const color = variant === "white" ? "text-white" : "text-olive-cta";
 
@@ -24,21 +26,19 @@ export function SeeOurButton({ label, poster, title, variant = "olive", classNam
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={cn(
-          "group inline-flex items-center gap-4 transition-opacity hover:opacity-80",
-          color,
-          className,
-        )}
+        className={cn("group inline-flex items-center gap-4", color, className)}
       >
         <span
-          className="relative flex shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105"
+          className="relative flex shrink-0 items-center justify-center rounded-full transition-transform duration-500 ease-out group-hover:scale-110"
           style={{ width: size, height: size }}
         >
-          <PlayCircle className="h-full w-full" />
+          <PlayCircle className="h-full w-full transition-opacity duration-300 group-hover:opacity-85" />
         </span>
-        <span className="eyebrow whitespace-nowrap">{label}</span>
+        <span className="link-sweep eyebrow whitespace-nowrap transition-colors duration-300 group-hover:opacity-90">
+          {label}
+        </span>
       </button>
-      <VideoModal open={open} onClose={() => setOpen(false)} poster={poster} title={title ?? label} />
+      <VideoModal open={open} onClose={() => setOpen(false)} poster={poster} videoSrc={video} title={title ?? label} />
     </>
   );
 }

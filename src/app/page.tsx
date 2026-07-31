@@ -22,7 +22,7 @@ export default function Home() {
         <ChapterIntro {...intros.groves} />
         <ChapterContent
           top={<OliveProgress />}
-          left={<ChapterText lead={content.groves.lead} body={content.groves.body} cta={content.groves.cta} poster={content.groves.videoPoster} />}
+          left={<ChapterText lead={content.groves.lead} body={content.groves.body} />}
           right={<PlantingComparison />}
         />
 
@@ -30,13 +30,13 @@ export default function Home() {
         <ChapterIntro {...intros.harvesting} />
         <ChapterContent
           left={<HarvesterIllustration />}
-          right={<ChapterText lead={content.harvesting.lead} body={content.harvesting.body} cta={content.harvesting.cta} poster={content.harvesting.videoPoster} />}
+          right={<ChapterText lead={content.harvesting.lead} body={content.harvesting.body} />}
         />
 
         {/* ── Milling ── */}
         <ChapterIntro {...intros.milling} />
         <ChapterContent
-          left={<ChapterText lead={content.milling.lead} cta={content.milling.cta} poster={content.milling.videoPoster} />}
+          left={<ChapterText lead={content.milling.lead} />}
           right={<ChapterBody paragraphs={content.milling.body} />}
           bottom={<MillingGallery />}
         />
@@ -44,14 +44,14 @@ export default function Home() {
         {/* ── Cellar ── */}
         <ChapterIntro {...intros.cellar} />
         <ChapterContent
-          left={<ChapterText lead={content.cellar.lead} cta={content.cellar.cta} poster={content.cellar.videoPoster} />}
+          left={<ChapterText lead={content.cellar.lead} />}
           right={<ChapterBody paragraphs={content.cellar.body} />}
         />
 
         {/* ── Packaging ── */}
         <ChapterIntro {...intros.packaging} />
         <ChapterContent
-          left={<ChapterText lead={content.packaging.lead} body={content.packaging.body} cta={content.packaging.cta} poster={content.packaging.videoPoster} />}
+          left={<ChapterText lead={content.packaging.lead} body={content.packaging.body} />}
           right={<FlavorLockBox />}
         />
 

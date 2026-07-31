@@ -25,12 +25,14 @@ export function ContinueTour() {
                 <img
                   src={c.thumb}
                   alt={c.label}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
                 />
-                <span className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/45" />
+                <span className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/10 transition-opacity duration-500 group-hover:opacity-90" />
                 <span className="absolute inset-x-0 bottom-5 flex flex-col items-center gap-1.5 text-white">
-                  <span className="font-quart text-[clamp(15px,1.6vw,20px)] uppercase tracking-[0.03em]">{c.label}</span>
-                  <span className="eyebrow text-[10px] tracking-[0.3em] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="font-quart text-[clamp(15px,1.6vw,20px)] uppercase tracking-[0.03em] transition-transform duration-500 ease-out group-hover:-translate-y-1">
+                    {c.label}
+                  </span>
+                  <span className="eyebrow text-[10px] tracking-[0.3em] opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 translate-y-1">
                     Explore
                   </span>
                 </span>
@@ -41,11 +43,15 @@ export function ContinueTour() {
 
         <Reveal delay={160} className="mt-16 flex items-center justify-center gap-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/tasting/tour_guide.png" alt="Brady Whitlow" className="h-16 w-16 rounded-full object-cover" />
+          <img
+            src="/images/tasting/aliva_gregorio.jpg"
+            alt="Gregorio Paone"
+            className="h-16 w-16 rounded-full object-cover ring-1 ring-olive/25"
+          />
           <div className="text-left">
-            <p className="eyebrow text-[11px] text-olive-cta">Tour Guide</p>
-            <p className="font-plantin text-[clamp(16px,1.8vw,22px)] leading-tight text-olive">Brady Whitlow</p>
-            <p className="font-sofia text-[13px] font-light text-body-ink">Co-Founder</p>
+            <p className="eyebrow text-[11px] text-olive-cta">Your Host</p>
+            <p className="font-plantin text-[clamp(16px,1.8vw,22px)] leading-tight text-olive">Gregorio Paone</p>
+            <p className="font-sofia text-[13px] font-light text-body-ink">Founder, Aliva</p>
           </div>
         </Reveal>
       </div>

@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/Reveal";
-import { SeeOurButton } from "@/components/SeeOurButton";
 
 interface ChapterContentProps {
   /** full-width node above the two-column grid (e.g. olive-ripeness row) */
@@ -29,51 +28,21 @@ export function ChapterContent({ top, left, right, bottom, className }: ChapterC
   );
 }
 
-/** Composed text column: large Plantin lead, optional body, optional "SEE OUR X" CTA. */
-export function ChapterText({
-  lead,
-  body,
-  cta,
-  poster,
-}: {
-  lead: string;
-  body?: string[];
-  cta?: string;
-  poster?: string;
-}) {
+/** Composed text column: large Plantin lead + optional body paragraphs. */
+export function ChapterText({ lead, body }: { lead: string; body?: string[] }) {
   return (
     <div>
       <h2 className="font-plantin text-[clamp(21px,2.1vw,27px)] leading-[1.32] text-olive">{lead}</h2>
       {body && body.length > 0 && <ChapterBody className="mt-8" paragraphs={body} />}
-      {cta && (
-        <div className="mt-[clamp(28px,3vw,44px)]">
-          <SeeOurButton label={cta} poster={poster} title={cta} variant="olive" />
-        </div>
-      )}
     </div>
   );
 }
 
-/** Large Plantin serif lead + optional "SEE OUR X" CTA. */
-export function ChapterLead({
-  children,
-  cta,
-  poster,
-  className,
-}: {
-  children: ReactNode;
-  cta?: string;
-  poster?: string;
-  className?: string;
-}) {
+/** Large Plantin serif lead. */
+export function ChapterLead({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div className={className}>
       <h2 className="font-plantin text-[clamp(21px,2.1vw,27px)] leading-[1.32] text-olive">{children}</h2>
-      {cta && (
-        <div className="mt-[clamp(28px,3vw,44px)]">
-          <SeeOurButton label={cta} poster={poster} title={cta} variant="olive" />
-        </div>
-      )}
     </div>
   );
 }

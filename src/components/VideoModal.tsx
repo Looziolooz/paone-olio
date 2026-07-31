@@ -8,10 +8,12 @@ interface VideoModalProps {
   open: boolean;
   onClose: () => void;
   poster?: string;
+  /** real video file — when present it plays with sound; otherwise the animated photo shows */
+  videoSrc?: string;
   title?: string;
 }
 
-export function VideoModal({ open, onClose, poster, title }: VideoModalProps) {
+export function VideoModal({ open, onClose, poster, videoSrc, title }: VideoModalProps) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -47,7 +49,19 @@ export function VideoModal({ open, onClose, poster, title }: VideoModalProps) {
         {title && (
           <p className="eyebrow mb-3 text-center text-white/70">{title}</p>
         )}
-        <VideoPlaceholder poster={poster} className="rounded-sm shadow-2xl" />
+        {videoSrc ? (
+          <video
+            className="w-full rounded-sm shadow-2xl"
+            src={videoSrc}
+            poster={poster}
+            controls
+            autoPlay
+            loop
+            playsInline
+          />
+        ) : (
+          <VideoPlaceholder poster={poster} className="rounded-sm shadow-2xl" />
+        )}
       </div>
     </div>
   );

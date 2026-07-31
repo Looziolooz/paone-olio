@@ -37,13 +37,13 @@ export function IntroGate() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[90] flex flex-col items-center justify-center overflow-hidden bg-[#1c2416] text-white transition-opacity duration-700",
+        "grain fixed inset-0 z-[90] flex flex-col items-center justify-center overflow-hidden bg-[#181d10] text-white transition-opacity duration-700",
         leaving ? "pointer-events-none opacity-0" : "opacity-100",
       )}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/videos/posters/hero-poster.jpg" alt="" className="absolute inset-0 h-full w-full scale-105 object-cover opacity-40" />
-      <div className="absolute inset-0 bg-black/40" />
+      <img src="/videos/posters/hero-poster.jpg" alt="" className="absolute inset-0 h-full w-full scale-105 object-cover opacity-55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/60" />
 
       <button
         type="button"
@@ -54,10 +54,12 @@ export function IntroGate() {
       </button>
 
       <div className="relative z-10 flex flex-col items-center px-6 text-center">
-        <p className="eyebrow mb-7 text-[11px] tracking-[0.3em] text-white/65">Corto Harvest Experience</p>
-        <h1 className="font-plantin text-[clamp(42px,7.5vw,88px)] leading-[0.95]">Experience</h1>
-        <p className="mt-6 max-w-md font-sofia text-[clamp(12px,1.4vw,16px)] font-light uppercase tracking-[0.22em] text-white/85">
-          of ultra fresh Extra Virgin Olive Oil
+        <p className="eyebrow mb-7 text-[11px] tracking-[0.3em] text-white/70">Aliva · Azienda Agricola Paone</p>
+        <h1 className="font-plantin text-[clamp(38px,6.6vw,84px)] leading-[1.02]">
+          Passion for <span className="italic">olive oil</span>
+        </h1>
+        <p className="mt-6 max-w-lg font-sofia text-[clamp(12px,1.4vw,16px)] font-light uppercase tracking-[0.22em] text-white/85">
+          wealth of our earth — Extra Virgin Olive Oil from Maida, Calabria
         </p>
       </div>
 

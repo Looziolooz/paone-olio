@@ -3,18 +3,19 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://harvest.corto-olive.com"),
-  title: "Fall Harvest - Corto Olive Oil",
+  metadataBase: new URL("https://www.alivaextra.it"),
+  title: "Aliva — Extra Virgin Olive Oil from Maida, Calabria",
   description:
-    "Experience Corto Olive's Fall Harvest — the journey of ultra-fresh Extra Virgin Olive Oil from grove to cellar, crafted with care in Lodi, California.",
-  icons: { icon: "/seo/favicon.ico", shortcut: "/seo/favicon.ico" },
+    "Passion for olive oil, wealth of our earth. Follow the journey of Aliva Extra Virgin Olive Oil — from 4,500 organically cultivated olive trees in Maida, Calabria, through harvest, milling and cellar, to your table.",
+  icons: { icon: "/seo/favicon.png", shortcut: "/seo/favicon.png" },
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Fall Harvest",
-    title: "Corto Olive Oil Fall Harvest",
-    description: "Experience Corto Olive's Fall Harvest.",
-    url: "https://harvest.corto-olive.com/",
+    siteName: "Aliva — Olio Extra Vergine d'Oliva",
+    title: "Aliva — Passion for Olive Oil, Wealth of Our Earth",
+    description:
+      "The journey of Aliva Extra Virgin Olive Oil — from grove to bottle in Maida, Calabria.",
+    url: "https://www.alivaextra.it/",
     images: [{ url: "/seo/og-image.jpg", width: 1200, height: 630, type: "image/jpeg" }],
   },
 };

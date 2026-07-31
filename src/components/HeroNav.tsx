@@ -9,18 +9,18 @@ export function HeroNav() {
   return (
     <section className="relative py-[clamp(72px,12vw,150px)]">
       <div className="site-wrap">
-        {/* crafted with care · California · in Lodi */}
+        {/* cultivated organically · Calabria · in Maida */}
         <Reveal className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-ink">
           <span className="font-plantin text-[clamp(12px,1.15vw,15.6px)] uppercase tracking-[0.09em]">
-            Crafted with care
+            Cultivated organically
           </span>
-          <span className="relative inline-flex h-[46px] w-[40px] items-center justify-center">
+          <span className="relative inline-block h-[56px] w-[31px]">
             <span
               aria-hidden
               className="absolute inset-0 bg-olive-accent/55"
               style={{
-                WebkitMaskImage: "url(/images/ui/california.svg)",
-                maskImage: "url(/images/ui/california.svg)",
+                WebkitMaskImage: "url(/images/ui/calabria.svg)",
+                maskImage: "url(/images/ui/calabria.svg)",
                 WebkitMaskRepeat: "no-repeat",
                 maskRepeat: "no-repeat",
                 WebkitMaskSize: "contain",
@@ -29,10 +29,14 @@ export function HeroNav() {
                 maskPosition: "center",
               }}
             />
-            <MapPin className="relative h-[14px] w-[14px] text-olive" />
+            {/* pin tip lands on Maida (isthmus of Catanzaro) */}
+            <MapPin
+              className="absolute h-[13px] w-[13px] text-olive"
+              style={{ left: "46.4%", top: "57.8%", transform: "translate(-50%, -100%)" }}
+            />
           </span>
           <span className="font-plantin text-[clamp(12px,1.15vw,15.6px)] uppercase tracking-[0.09em]">
-            In Lodi, California
+            In Maida, Calabria
           </span>
         </Reveal>
 
@@ -48,8 +52,10 @@ export function HeroNav() {
               onClick={() => scrollToId(s.href)}
               className="group flex flex-col items-center gap-2 text-center"
             >
-              <span className="font-plantin text-[18px] italic leading-none text-olive">{s.index}</span>
-              <span className="font-quart text-[clamp(19px,2vw,26px)] uppercase tracking-[0.015em] leading-none text-olive transition-opacity duration-300 group-hover:opacity-65">
+              <span className="font-plantin text-[18px] italic leading-none text-olive transition-transform duration-500 ease-out group-hover:-translate-y-0.5">
+                {s.index}
+              </span>
+              <span className="link-sweep font-quart text-[clamp(19px,2vw,26px)] uppercase tracking-[0.015em] leading-none text-olive transition-colors duration-300 group-hover:text-olive-cta">
                 {s.word}
               </span>
             </button>

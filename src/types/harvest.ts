@@ -13,12 +13,16 @@ export interface ChapterIntroSpec {
   title: string;
   /** main full-bleed background photo */
   background: string;
+  /** optional muted looping video played behind the title (photo is the reduced-motion fallback) */
+  backgroundVideo?: string;
   /** foreground parallax overlays drawn above the background */
   layers?: ParallaxLayerSpec[];
   /** "SEE OUR GROVES" etc. */
   cta: string;
   /** poster shown in the video placeholder modal */
   videoPoster: string;
+  /** optional real video played in the modal (falls back to the animated photo) */
+  videoSrc?: string;
   /** only the first chapter shows the "Begin Your Journey" arrow */
   beginJourney?: boolean;
 }
@@ -30,6 +34,8 @@ export interface ChapterContentSpec {
   /** "SEE OUR X" label */
   cta: string;
   videoPoster: string;
+  /** optional real video played in the modal (falls back to the animated photo) */
+  videoSrc?: string;
   /** Sofia Pro body paragraphs (right column) */
   body: string[];
 }

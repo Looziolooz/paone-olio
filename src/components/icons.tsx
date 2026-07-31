@@ -85,19 +85,19 @@ export function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-/** CORTO wordmark — text-based fallback for the footer logo. */
-export function CortoWordmark(props: React.HTMLAttributes<HTMLSpanElement>) {
+/** aliva wordmark — text-based rendition of the leaf-drop logo lockup. */
+export function AlivaWordmark(props: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       {...props}
       style={{
-        fontFamily: "var(--font-sofia)",
-        fontWeight: 700,
-        letterSpacing: "0.42em",
+        fontFamily: "var(--font-plantin)",
+        fontStyle: "italic",
+        letterSpacing: "0.08em",
         ...props.style,
       }}
     >
-      CORTO
+      aliva
     </span>
   );
 }

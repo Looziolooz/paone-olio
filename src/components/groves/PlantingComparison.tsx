@@ -18,7 +18,7 @@ function ViewToggle({ active, onSelect }: { active: "front" | "top"; onSelect: (
             active === v ? "text-olive" : "text-olive/40 hover:text-olive/70",
           )}
         >
-          {v === "front" ? "Front View" : "Top View"}
+          {v === "front" ? "The Trees" : "The Fruit"}
         </button>
       ))}
     </div>
@@ -30,23 +30,23 @@ function Card({ card }: { card: PlantingCard }) {
   return (
     <div className="flex flex-col items-center text-center">
       <p className="eyebrow mb-4 text-[clamp(10px,0.85vw,12px)] text-olive-cta">{card.title}</p>
-      <div className="relative aspect-[4/3] w-full">
+      <div className="photo-frame relative aspect-[4/3] w-full overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={card.frontView}
-          alt={`${card.title} front view`}
+          alt={`${card.title} — the trees`}
           className={cn(
-            "absolute inset-0 h-full w-full object-contain transition-opacity duration-500",
-            view === "front" ? "opacity-100" : "opacity-0",
+            "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-out",
+            view === "front" ? "scale-100 opacity-100" : "scale-[1.03] opacity-0",
           )}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={card.topView}
-          alt={`${card.title} top view`}
+          alt={`${card.title} — the fruit`}
           className={cn(
-            "absolute inset-0 h-full w-full object-contain transition-opacity duration-500",
-            view === "top" ? "opacity-100" : "opacity-0",
+            "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-out",
+            view === "top" ? "scale-100 opacity-100" : "scale-[1.03] opacity-0",
           )}
         />
       </div>
