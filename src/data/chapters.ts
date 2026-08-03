@@ -20,7 +20,7 @@ export const intros: Record<string, ChapterIntroSpec> = {
     id: "groves",
     title: "Groves",
     background: "/images/groves/aliva_panorama.jpg",
-    backgroundVideo: "/videos/groves.mp4",
+    zoomOnScroll: true,
     cta: "see our groves",
     videoPoster: "/images/groves/aliva_olives_branch.jpg",
     videoSrc: "/videos/groves.mp4",

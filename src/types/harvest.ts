@@ -15,6 +15,8 @@ export interface ChapterIntroSpec {
   background: string;
   /** optional muted looping video played behind the title (photo is the reduced-motion fallback) */
   backgroundVideo?: string;
+  /** one-shot slow zoom-in on the background photo when the chapter scrolls into view */
+  zoomOnScroll?: boolean;
   /** foreground parallax overlays drawn above the background */
   layers?: ParallaxLayerSpec[];
   /** "SEE OUR GROVES" etc. */

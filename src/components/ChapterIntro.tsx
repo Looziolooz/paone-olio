@@ -1,18 +1,20 @@
 import { cn } from "@/lib/utils";
 import { ParallaxLayer } from "@/components/Parallax";
+import { ZoomOnce } from "@/components/ZoomOnce";
 import { ArrowDown } from "@/components/icons";
 import type { ChapterIntroSpec } from "@/types/harvest";
 
 /**
- * Full-bleed parallax chapter hero: background photo — or a muted looping
- * video with the photo as reduced-motion fallback — (+ optional overlays)
- * and a giant Quart title.
+ * Full-bleed parallax chapter hero: background photo — optionally with a
+ * one-shot slow zoom-in on scroll — or a muted looping video with the photo
+ * as reduced-motion fallback — (+ optional overlays) and a giant Quart title.
  */
 export function ChapterIntro({
   id,
   title,
   background,
   backgroundVideo,
+  zoomOnScroll,
   layers,
   beginJourney,
 }: ChapterIntroSpec) {
@@ -40,6 +42,11 @@ export function ChapterIntro({
               className="hidden h-full w-full object-cover motion-reduce:block"
             />
           </>
+        ) : zoomOnScroll ? (
+          <ZoomOnce className="h-full w-full">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={background} alt={`${title} at Aliva, Maida — Calabria`} className="h-full w-full object-cover" />
+          </ZoomOnce>
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={background} alt={`${title} at Aliva, Maida — Calabria`} className="h-full w-full object-cover" />
