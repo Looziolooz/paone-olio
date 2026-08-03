@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ParallaxLayer } from "@/components/Parallax";
 import { ZoomOnce } from "@/components/ZoomOnce";
+import { GiantTitle } from "@/components/GiantTitle";
 import { ArrowDown } from "@/components/icons";
 import type { ChapterIntroSpec } from "@/types/harvest";
 
@@ -76,7 +77,7 @@ export function ChapterIntro({
             <ArrowDown className="h-9 w-4 animate-bounce [animation-duration:2.4s]" />
           </div>
         )}
-        <h2 className="giant-title drop-shadow-[0_2px_28px_rgba(10,14,6,0.35)]">{title}</h2>
+        <GiantTitle className="giant-title drop-shadow-[0_2px_28px_rgba(10,14,6,0.35)]">{title}</GiantTitle>
       </div>
     </section>
   );

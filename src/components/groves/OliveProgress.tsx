@@ -1,7 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const STEPS = [1, 2, 3, 4, 5, 6, 7];
 
@@ -13,17 +17,12 @@ const STEPS = [1, 2, 3, 4, 5, 6, 7];
 export function OliveProgress() {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const root = ref.current;
-    if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const ctx = gsap.context(() => {
-      const tiles = gsap.utils.toArray<HTMLElement>("[data-olive]");
-      const labels = gsap.utils.toArray<HTMLElement>("[data-olive-label]");
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
       // idle sway, armed after the pops finish
-      const sway = gsap.to(tiles, {
+      const sway = gsap.to("[data-olive]", {
         y: -4,
         duration: 2.8,
         ease: "sine.inOut",
@@ -33,11 +32,14 @@ export function OliveProgress() {
         paused: true,
       });
 
-      const tl = gsap
-        .timeline({ paused: true, defaults: { ease: "back.out(1.7)" } })
-        .from(labels, { autoAlpha: 0, y: 14, duration: 0.6, ease: "power2.out", stagger: 0.12 })
+      gsap
+        .timeline({
+          defaults: { ease: "back.out(1.7)" },
+          scrollTrigger: { trigger: ref.current, start: "top 75%", once: true },
+        })
+        .from("[data-olive-label]", { autoAlpha: 0, y: 14, duration: 0.6, ease: "power2.out", stagger: 0.12 })
         .from(
-          tiles,
+          "[data-olive]",
           {
             autoAlpha: 0,
             y: 24,
@@ -49,24 +51,9 @@ export function OliveProgress() {
           "-=0.25",
         )
         .add(() => sway.play());
-
-      const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              tl.play();
-              io.disconnect();
-            }
-          }
-        },
-        { threshold: 0.4 },
-      );
-      io.observe(root);
-      return () => io.disconnect();
-    }, root);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: ref },
+  );
 
   return (
     <div ref={ref} className="mx-auto flex w-full max-w-[820px] flex-col items-center">

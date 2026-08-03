@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { millingSteps } from "@/data/chapters";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 /**
  * The three extraction steps enter in sequence along a dashed process line
@@ -12,16 +16,11 @@ import { millingSteps } from "@/data/chapters";
 export function MillingGallery() {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const root = ref.current;
-    if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const ctx = gsap.context(() => {
-      const steps = gsap.utils.toArray<HTMLElement>("[data-mill-step]");
-      const images = gsap.utils.toArray<HTMLElement>("[data-mill-image]");
-
-      const float = gsap.to(images, {
+      const float = gsap.to("[data-mill-image]", {
         y: -5,
         duration: 3.2,
         ease: "sine.inOut",
@@ -31,33 +30,20 @@ export function MillingGallery() {
         paused: true,
       });
 
-      const tl = gsap
-        .timeline({ paused: true })
+      gsap
+        .timeline({
+          scrollTrigger: { trigger: ref.current, start: "top 70%", once: true },
+        })
         .from("[data-mill-line]", { scaleX: 0, transformOrigin: "0% 50%", duration: 1.5, ease: "power2.inOut" })
         .from(
-          steps,
+          "[data-mill-step]",
           { autoAlpha: 0, y: 30, duration: 0.8, ease: "power3.out", stagger: 0.22 },
           "-=1.2",
         )
         .add(() => float.play());
-
-      const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              tl.play();
-              io.disconnect();
-            }
-          }
-        },
-        { threshold: 0.3 },
-      );
-      io.observe(root);
-      return () => io.disconnect();
-    }, root);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: ref },
+  );
 
   return (
     <div ref={ref} className="relative">
