@@ -1,4 +1,4 @@
-# Pileggi Olio
+# Paone Olio
 
 A scroll-driven, single-page **olive-harvest storytelling website** — built with Next.js 16 (App Router, React 19) and Tailwind CSS v4.
 
