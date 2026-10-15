@@ -1,5 +1,14 @@
 # Paone Olio
 
+<!-- looz-design-credit -->
+> Progettato e sviluppato da **[LOoz.design](https://looz.design/?utm_source=github&utm_medium=referral&utm_campaign=readme)**: siti web, gestionali e agenti AI per piccole attività.
+> *Designed and built by LOoz.design: websites, management tools and AI agents for small businesses.*
+>
+> **Demo online:** https://pileggi-olio.vercel.app/ · **Scheda del progetto · Case study:** https://looz.design/work/aliva
+
+> Concept indipendente a scopo dimostrativo, non affiliato al marchio citato. *Independent concept, not affiliated with the brand.*
+<!-- /looz-design-credit -->
+
 A scroll-driven, single-page **olive-harvest storytelling website** — built with Next.js 16 (App Router, React 19) and Tailwind CSS v4.
 
 The page walks the visitor through the harvest journey: an intro gate, a hero with a five-step journey nav, and five chapters — **Groves · Harvesting · Milling · Cellar · Packaging** — each with a full-bleed parallax hero and an editorial content band, closing on a tasting call-to-action and a guided "continue the tour" section.
